@@ -1,0 +1,58 @@
+Урок 3
+Цикл жизни Activity
+одно Activity - одно окно 
+для взаимодействия пользователя с приложением (системой)
+AppCompatActivity() - обращается к системе, создает окно
+layout file - разметка экрана...
+ <activity
+            android:name=".Activity2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+декларация в манифесте нового активити
+
+<intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />//открывается при нажатии на иконку
+</intent-filter>
+
+ЦИКЛ ЖИЗНИ АКТИВИТИ
+1. onCreate - запускается ОДИН РАЗ, когда активити уже готово, ресурсы все загрузились (готовы), 
+можно писать код (ошибки не будет)
+override fun onCreate(savedInstanceState: Bundle?) {
+   super.onCreate(savedInstanceState)
+   setContentView(R.layout.activity_main)
+}
+	|
+	v
+2. onStart()
+	|
+	v
+3. onResume()
+	|
+	v
+ПРИЛОЖЕНИЕ РАБОТАЕТ
+на этом этапе больше не запуститься onCreate, onStart (нужен Restart()), onResume
+	|
+	v
+Например, другое активити вышло впереди текущего активити
+4. Приложение вошло в onPause() - все процессы тормозятся
+
+ВАЖНО: БАЗУ ДАННЫХ ОТКРЫВАТЬ (присваивать переменные?) В onResume(),
+так как после 5. onPause() (-> onResume()) и 6. onStop() (-> onStart()) (- перезапуск)
+например, в onPause() будет закрытие БД, а открывалась она в onCreate() - 
+вызывается один раз - бд больше не откроется - ПРОБЛЕМА!
+
+5. onPause() - поверх экрана другой экран (сообщение)
+6. onStop() (вызывает и onPause()) - основной активити невидим на экране
+также на п. 5 и 6 процессы приложения могут быть уничтожены (память освобождена)
+из-за нехватки ресурсов устройства (КРАЙНИЙ СЛУЧАЙ) (-> onCreate())
+	|
+	v
+7. onDestroy() - выход из активити, активити разрушается, данные освобождаются
+Вызывается при выходе из приложения
+
+Более подробно на https://neco-desarrollo.es/activity
