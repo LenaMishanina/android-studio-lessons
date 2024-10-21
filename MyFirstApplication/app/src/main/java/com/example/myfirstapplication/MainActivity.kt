@@ -7,19 +7,32 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.example.myfirstapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var tv : TextView // lateinit var - инициализация будет позже
-    lateinit var btn : Button
+    lateinit var bind : ActivityMainBinding
+    val a = 123
+    val b = 56
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        tv = findViewById(R.id.tvTest)
-        btn = findViewById(R.id.btnTest)
+        bind = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bind.root)//root - контейнер, где лежат все элементы
 
-        btn.setOnClickListener {
-            tv.text = "downton abbey"
+        bind.tvVar.text = "$a and $b"
+
+        bind.btnMinus.setOnClickListener {
+            val c = a - b
+            bind.tvResult.text = c.toString()
+        }
+        bind.btnMultiple.setOnClickListener {
+            val c = a * b
+            bind.tvResult.text = c.toString()
+        }
+        bind.btnPlus.setOnClickListener {
+            val c = a + b
+            bind.tvResult.text = c.toString()
         }
 
     }

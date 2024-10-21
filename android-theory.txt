@@ -132,5 +132,72 @@ class MainActivity : AppCompatActivity() {
 }
 
 Способ 3 (binding)
+class MainActivity : AppCompatActivity() {
+    lateinit var bind : ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        bind = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bind.root)//root - контейнер, где лежат все элементы
+        bind.tvTest.text = "downton abbey"
+    }
+}
 
 findViewById после setContentView!!!
+
+Урок 9
+View Binding 
+генерирует из xml-разметки (после setContentView) отдельный класс с доступом к элементам
+Подключение в build.gradle (module)
+android {
+    ...
+    buildFeatures {
+	viewBinding true
+    }
+}
+
+class MainActivity : AppCompatActivity() {
+    lateinit var bind : ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        bind = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bind.root)//root - контейнер, где лежат все элементы
+
+        bind.btnTest.setOnClickListener {
+            bind.tvTest.text = "downton abbey"
+        }
+    }
+}
+
+
+ConstraintLayout
+layout_width (height) -> match_parent/wrap_content/<num>dp
+во весь экран/по элементам внутри/указанный размер
+
+Если не прикрепить элемент внутри ConstraintLayout, он окажется в вверхнем левом углу
+
+Общие аттрибуты View
+background - фон (backgroundTint у Button)
+layout_width (height) - ширина высота, занимемая на экране (0dp = match_constraint = 
+= заполнить место от одной точки до второй, поэтому должны быть обе точки)
+visibility -> visible/invisible/gone 
+элемент виден на экране/не виден на экране, но на него можно нажать/не виден на экране и не доступен (свернулся)
+
+изменить аттрибут в коде например
+bind.tvTest.visibility = View.GONE !!!
+
+**Если случился баг в AndroidStudio (например, высвечивается view, которого нет)
+Способ 1. Build -> Rebuild Project
+Способ 2. File -> Invalidate Caches / Restart -> Invalidate and Restart
+
+Форматированный вывод
+val a = 123
+val b = 56
+bind.tvVar.text = "Result $a and $b = "
+
+
+
+
+
+
