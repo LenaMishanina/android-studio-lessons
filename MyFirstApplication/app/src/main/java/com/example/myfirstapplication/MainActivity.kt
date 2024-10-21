@@ -1,49 +1,26 @@
 package com.example.myfirstapplication
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-    //код не исполняется
-    //возможно присвоение на уровне класса
-    private var counter = 0
+    lateinit var tv : TextView // lateinit var - инициализация будет позже
+    lateinit var btn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        counter = 5+6
-        Log.d("tagACTIVITY", "onCreate")
+        tv = findViewById(R.id.tvTest)
+        btn = findViewById(R.id.btnTest)
 
-    }
+        btn.setOnClickListener {
+            tv.text = "downton abbey"
+        }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d("tagACTIVITY", "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("tagACTIVITY", "onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("tagACTIVITY", "onPause")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("tagACTIVITY", "onDestroy")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("tagACTIVITY", "onStop")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d("tagACTIVITY", "onRestart")
     }
 }

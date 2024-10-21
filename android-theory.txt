@@ -76,3 +76,61 @@ TAG для того, чтобы фильтровать логи
 
 Урок 5
 все элементы на экране - view
+
+Урок 6-8
+Переменные
+var - можно перезаписать (например, счетчик)
+val (литерал) - нельзя перезаписать переменную, только читать (константа) (например, findViewById)
+глобальные переменные - временная память, она будет освобождена при onDestroy (пока не разрушится активити)
+локальные переменные - временная память, она будет освобождена при выходн из блока, где существует переменная
+
+этим и плохи глобальные переменные, занимают место в памяти на протяжении работы всего активити.
+лучше использовать локальные
+
+CTRL + D копирование и вставка строки на следующую строку
+
+int to string
+7.toString()
+.to<все что угодно>
+
+var counter : Int = 0
+0 - литерал (нельзя изменить 0) (- конкретное значение)
+counter - переменная (изменяемая тк вар)
+
+Типы данных
+Int 
+Byte (занимает меньше памяти чем Int)
+Long
+
+Выбирать с умом (для оптимизации)
+https://kotlinlang.org/docs/basic-types.html
+
+Типы данных в котлине - классы (у них много полезных функций (String !))
+
+Способ 1
+class MainActivity : AppCompatActivity() {
+    var tv : TextView? = null // ? - может быть null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        tv = findViewById(R.id.tvTest)
+        tv?.text = "downton abbey" // нужна проверка, что не null
+    }
+}
+
+Способ 2 (правильный)
+class MainActivity : AppCompatActivity() {
+    lateinit var tv : TextView // lateinit var - инициализация будет позже
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        tv = findViewById(R.id.tvTest)
+        tv.text = "downton abbey"
+    }
+}
+
+Способ 3 (binding)
+
+findViewById после setContentView!!!
