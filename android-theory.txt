@@ -228,3 +228,15 @@ bind.tvResult.text =  when(currentPerson > maxPerson) {
 об операциях, разрешенных в when
 https://kotlinlang.org/docs/control-flow.html#if-expression
 
+*** В bind.tvResult.text не передавать форматированный ввод (разделить задачи)
+temp = "friends"
+bind.tvResult.text = temp
+
+Пример enum
+enum class Workers(val nameWorker: String, val salary: String) {
+  PROGRAMMER("Лена", "100 тыс"),
+  ARCHITECTURE("Катя","1 млн"),
+  COMPOSITOR("Вика","3 млн"),
+  DOCTOR("Соня","100 тыс"),
+}
+
