@@ -6,63 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tvResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calculate"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.466" />
-
-    <Button
-        android:id="@+id/btnPlus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="Plus"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tvResult"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toStartOf="@+id/tvResult"
-        app:layout_constraintTop_toBottomOf="@id/tvResult"
-        app:layout_constraintVertical_bias="0.153" />
-
-    <Button
-        android:id="@+id/btnMultiple"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Multiple"
-        app:layout_constraintEnd_toEndOf="@+id/btnPlus"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="@+id/btnPlus"
-        app:layout_constraintTop_toBottomOf="@+id/btnPlus" />
-
-    <Button
-        android:id="@+id/btnMinus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Minus"
-        app:layout_constraintEnd_toEndOf="@+id/btnMultiple"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="@+id/btnMultiple"
-        app:layout_constraintTop_toBottomOf="@+id/btnMultiple" />
 
     <TextView
-        android:id="@+id/tvVar"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="268dp"
-        android:text="a and b"
+        android:layout_marginTop="250dp"
+        android:text="Введите количество подписчиков"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/edNumFollows"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="кол подписчиков"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@android:color/holo_green_dark"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/edNumFollows"
+        app:layout_constraintStart_toStartOf="@+id/edNumFollows"
+        app:layout_constraintTop_toBottomOf="@+id/edNumFollows" />
+
+    <Button
+        android:id="@+id/btnGetResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Определить"
+        app:layout_constraintEnd_toEndOf="@+id/tvResult"
+        app:layout_constraintStart_toStartOf="@+id/tvResult"
+        app:layout_constraintTop_toBottomOf="@+id/tvResult" />
 </androidx.constraintlayout.widget.ConstraintLayout>

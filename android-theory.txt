@@ -197,7 +197,34 @@ val b = 56
 bind.tvVar.text = "Result $a and $b = "
 
 
-
-
-
+Урок 10-12 Условные операторы
+Способ 1
+if (currentPerson > maxPerson) {
+  bind.tvResult.text = "Bad"
+} else {
+  bind.tvResult.text = "Good but bad because covid"
+}
+Способ 2 (если выдается только одно значение!) (else обязательно дб!)
+bind.tvResult.text = if (currentPerson > maxPerson) {
+  "Bad"
+} else {
+  "Good but bad because covid"
+}
+Способ 3
+when(currentPerson) {
+ in 0..maxPerson -> bind.tvResult.text = "Good but bad because covid"
+ else -> bind.tvResult.text = "Bad"
+}
+Способ 4 (аналогично способу 2)
+bind.tvResult.text =  when(currentPerson) {
+  in 0..maxPerson -> "Good but bad because covid"
+  else -> "Bad"
+}
+Способ 5
+bind.tvResult.text =  when(currentPerson > maxPerson) {
+  false -> "Good but bad because covid"
+  true -> "Bad"
+}
+об операциях, разрешенных в when
+https://kotlinlang.org/docs/control-flow.html#if-expression
 

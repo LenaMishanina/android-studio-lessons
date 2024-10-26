@@ -1,39 +1,33 @@
 package com.example.myfirstapplication
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import com.example.myfirstapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var bind : ActivityMainBinding
-    val a = 123
-    val b = 56
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)//root - контейнер, где лежат все элементы
 
-        bind.tvVar.text = "$a and $b"
+        bind.btnGetResult.setOnClickListener {
+            if (bind.edNumFollows.text.toString() == "") {
+                bind.tvResult.text = "Введите количество ваших подписчиков!"
+            } else {
+                val numFollow = bind.edNumFollows.text.toString().toInt()
 
-        bind.btnMinus.setOnClickListener {
-            val c = a - b
-            bind.tvResult.text = c.toString()
+                Log.d("MainActivityLog", "Result = $numFollow")
+                bind.tvResult.text = when (numFollow) {
+                    in 0..1000 -> "Cool"
+                    in 1000..100000 -> "Super cool"
+                    else -> "Mega cool"
+                }
+            }
+            bind.tvResult.visibility = View.VISIBLE
         }
-        bind.btnMultiple.setOnClickListener {
-            val c = a * b
-            bind.tvResult.text = c.toString()
-        }
-        bind.btnPlus.setOnClickListener {
-            val c = a + b
-            bind.tvResult.text = c.toString()
-        }
-
     }
 }
