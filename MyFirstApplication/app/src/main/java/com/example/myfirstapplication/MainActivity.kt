@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)//root - контейнер, где лежат все элементы
-        val a: Int = R.drawable.kate
+
         bind.btnGetResult.setOnClickListener {
             val workerName = bind.spinnerName.selectedItem.toString()
             Log.d("MainActivityLog", "Result = $workerName")
