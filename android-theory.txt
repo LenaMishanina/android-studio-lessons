@@ -240,3 +240,18 @@ enum class Workers(val nameWorker: String, val salary: String) {
   DOCTOR("Соня","100 тыс"),
 }
 
+Урок 13
+Ресурсы 
+aapt генерирует R и категории, где хранятся переменные 
+object R {
+  object drawable {
+    val icon = 4567890 
+    //icon.png, <id>, R.drawable.icon (для кода), @drawable/icon (для xml)
+  }
+  object layout {    }
+  object mipmap {    }
+  object color {    }
+  object string {    }
+  object style {    }
+}
+**для именовании файлов в drawable нельзя использовать пробелы и заглавные буквы
