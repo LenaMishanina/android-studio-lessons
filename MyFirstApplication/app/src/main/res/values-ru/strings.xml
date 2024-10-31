@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Мое приложение</string>
+    <string name="hello">Привет</string>
+    <string-array name="workerNames">
+        <item>Лена</item>
+        <item>Катя</item>
+        <item>Вика</item>
+        <item>Соня</item>
+    </string-array>
+</resources>

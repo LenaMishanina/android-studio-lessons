@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">MyFirstApplication</string>
+    <string name="hello">Hello</string>
     <string-array name="workerNames">
-        <item>Лена</item>
-        <item>Катя</item>
-        <item>Вика</item>
-        <item>Соня</item>
+        <item>Lena</item>
+        <item>Kate</item>
+        <item>Vica</item>
+        <item>Sony</item>
     </string-array>
 </resources>
