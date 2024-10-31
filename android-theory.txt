@@ -262,7 +262,8 @@ object R {
 res -> drawable (по умл)
 res -> drawable-v24 (версия api должна быть 24) (-v24 - квалификатор)
 Имена картинок в файле должны быть одинаковыми (чтобы при поиске картинке он мог определить нужную ему папку)
-Пример: перевод на разные языки
+
+Пример 1: перевод на разные языки
 1 new -> Android Resource Directory (чтобы добавить папку в res)
 2 Available qualifiers -> Locale -> Language -> ru -> Specific Region Only -> Any Region
 3 Создалась папка values-ru. 
@@ -274,3 +275,22 @@ res -> drawable-v24 (версия api должна быть 24) (-v24 - квал
 4 android:text="@string/hello"
 5 можно посмотреть как будет выглядеть на языке с помощью окна Design (без запуска приложения)
 Выбрать язык над экраном панель Default (en-us)/Russian (ru)
+
+Пример 2: перевод картинок на другой язык
+1 res -> new -> Android Resource Directory
+2 Resource type: drawable
+3 Available qualifiers -> Locale -> Language -> ru -> Specific Region Only -> Any Region
+4 Создать в обоих папках картинки с одним и тем же именем
+5 tools:srcCompat="@drawable/picture1"
+
+Пример 3: разный поворот (разметки) экрана (портрет и альбом)
+***можно блокировать поворот экрана в коде
+менять разметку можно в окне Design над экраном панель
+ВАЖНО
+Все элементы и на портрете, и на альбоме должны быть отображены
+1 res -> new -> Android Resource Directory
+2 Resource type: layout
+3 Available qualifiers -> Orientation -> Chosen qualifiers -> Portrait -> Screen orientation -> Landscape
+4 copy-paste activity_main.xml из папки layout в папку layout-land
+5 можно редактировать landscape activity_main.xml
+
