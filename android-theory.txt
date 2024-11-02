@@ -327,3 +327,59 @@ bind.btnCloseActivity.setOnClickListener {
   finish()
 }
 
+Передача данных между двумя активити 
+1 MainActivity -> TestActivity1
+MainActivity.kt 
+bind.btnToTestActivity1.setOnClickListener {
+  val intent = Intent(this, TestActivity1::class.java)
+  intent.putExtra("key", "hello, what's your name?")// putExtra(key, value)
+  startActivity(intent)
+}
+TestActivity1.kt
+val message = intent.getStringExtra("key")
+2 TestActivity1 -> MainActivity
+проблема, так как MainActivity уже существует, а нам нужно передать ответ из TestActivity1 
+если сделать так
+  val intent = Intent(this, MainActivity::class.java)
+  startActivity(intent)
+то откроется еще одно (НОВОЕ) MainActivity (их будет два)
+Тогда нужно переписать код на startActivityForResult
+MainActivity.kt
+    override fun onCreate(savedInstanceState: Bundle?) {
+        bind.btnToTestActivity1.setOnClickListener {
+            val intent = Intent(this, TestActivity1::class.java)
+            intent.putExtra("key", "hello, what's your name?")// putExtra(key, value)
+            startActivityForResult(intent, 100)//100 - идентификатор запроса
+        }
+    }
+    // получение результата от TestActivity1
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            val request = data.getStringExtra("answer_name")
+            bind.tvMessage.text = request
+        } else if (requestCode == 100 && resultCode == RESULT_CANCELED) {
+            bind.tvMessage.text = "Вы не ввели ответ"
+        }
+    }
+TestActivity1.kt
+    override fun onCreate(savedInstanceState: Bundle?) {
+        
+        val message = intent.getStringExtra("key")
+        bind.tvMessage.text = message
+
+        bind.btnBackToMainActivity.setOnClickListener {
+            val answer = bind.edtAnswer.text.toString()
+            intent.putExtra("answer_name", answer)
+            if (answer == "") {
+                setResult(RESULT_CANCELED)
+            } else {
+                setResult(RESULT_OK, intent)
+            }
+            finish()
+        }
+    }
+
+requestCode - идентификатор запроса (от какого к какому активити)
+resultCode - индентификатор ответа 
+data - данные, которые передаем (может быть null)
