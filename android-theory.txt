@@ -383,3 +383,34 @@ TestActivity1.kt
 requestCode - идентификатор запроса (от какого к какому активити)
 resultCode - индентификатор ответа 
 data - данные, которые передаем (может быть null)
+УСТАРЕВШИЙ СПОСОБ - startActivityForResult
+НОВЫЙ СПОСОБ (kt и java) - https://developer.android.com/training/basics/intents/result?hl=ru#java
+из TaskActivity1 нужно передать текст в MainActivity
+MainActivity.kt
+    lateinit var launcher: ActivityResultLauncher<Intent> // один запрос - один launcher
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result: ActivityResult ->
+            // request_code здесь не нужен, так как один запрос - один launcher
+            if (result.resultCode == RESULT_OK && result.data != null) {
+                val text = result.data!!.getStringExtra("key1").toString() //intent
+                bind.textView.text = text
+            }
+
+        }
+
+        bind.button2.setOnClickListener {
+            val intent = Intent(this, TestActivity1::class.java)
+            launcher.launch(intent)
+        }
+
+    }
+TaskActivity1.kt
+        bind.button.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("key1", "Hello, i'm from TaskActivity1")
+            setResult(RESULT_OK, intent)
+            finish()
+        }
