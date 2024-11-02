@@ -4,33 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".TestActivity1">
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity Main"
+        android:text="Test Activity 1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Button
-        android:id="@+id/btnToTestActivity2"
+        android:id="@+id/btnToMainActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="test activity 2"
+        android:text="main activity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-    <Button
-        android:id="@+id/btnCloseActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="close activity"
-        app:layout_constraintEnd_toEndOf="@+id/btnToTestActivity2"
-        app:layout_constraintStart_toStartOf="@+id/btnToTestActivity2"
-        app:layout_constraintTop_toBottomOf="@+id/btnToTestActivity2" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

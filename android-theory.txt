@@ -294,3 +294,36 @@ res -> drawable-v24 (версия api должна быть 24) (-v24 - квал
 4 copy-paste activity_main.xml из папки layout в папку layout-land
 5 можно редактировать landscape activity_main.xml
 
+Урок 16-18
+Создание активити
+com.exampe=le.mfa -> new -> activity -> empty activity
+
+AndroidManifest.xml
+<activity
+  android:name=".MainActivity"
+  android:exported="true">
+
+  <intent-filter> // указывает, что MainActivity - точка входа в приложение
+    <action android:name="android.intent.action.MAIN" />
+
+    <category android:name="android.intent.category.LAUNCHER" />
+  </intent-filter>
+
+  <meta-data
+    android:name="android.app.lib_name"
+    android:value="" />
+</activity>
+Другие активити нужно запускать самостоятельно
+
+Переход на новую активити
+// сообщение системе андройд, которая запустит активити
+val intent : Intent = Intent(this, MainActivity::class.java)
+startActivity(intent)//запустить активити
+
+***В сообщение об ошибке обращать внимание на Caused by:
+
+//закрытие текущего активити
+bind.btnCloseActivity.setOnClickListener { 
+  finish()
+}
+
