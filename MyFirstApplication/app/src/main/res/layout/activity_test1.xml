@@ -5,37 +5,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TestActivity1">
-    <TextView
-        android:id="@+id/tvMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test Activity 1"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+
+    <ImageView
+        android:id="@+id/imvAvatar2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/picture1" />
 
     <Button
-        android:id="@+id/btnBackToMainActivity"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnSetAvatar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="main activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMessage" />
+        android:layout_marginTop="8dp"
+        android:text="@string/avatar"
+        app:layout_constraintEnd_toEndOf="@+id/imvAvatar2"
+        app:layout_constraintStart_toStartOf="@+id/imvAvatar2"
+        app:layout_constraintTop_toBottomOf="@+id/imvAvatar2" />
 
     <EditText
-        android:id="@+id/edtAnswer"
+        android:id="@+id/edtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:hint="@string/login"
+        app:layout_constraintEnd_toEndOf="@+id/btnSetAvatar"
+        app:layout_constraintStart_toStartOf="@+id/btnSetAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/btnSetAvatar" />
 
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/pwd"
+        app:layout_constraintEnd_toEndOf="@+id/edtLogin"
+        app:layout_constraintStart_toStartOf="@+id/edtLogin"
+        app:layout_constraintTop_toBottomOf="@+id/edtLogin" />
 
+    <EditText
+        android:id="@+id/edtFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/first_name"
+        app:layout_constraintEnd_toEndOf="@+id/edtPassword"
+        app:layout_constraintStart_toStartOf="@+id/edtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+
+    <EditText
+        android:id="@+id/edtLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/last_name"
+        app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
+        app:layout_constraintStart_toStartOf="@+id/edtFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/edtFirstName" />
+
+    <EditText
+        android:id="@+id/edtFatherName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/father_name"
+        app:layout_constraintEnd_toEndOf="@+id/edtLastName"
+        app:layout_constraintStart_toStartOf="@+id/edtLastName"
+        app:layout_constraintTop_toBottomOf="@+id/edtLastName" />
+
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/done"
+        app:layout_constraintEnd_toEndOf="@+id/edtFatherName"
+        app:layout_constraintStart_toStartOf="@+id/edtFatherName"
+        app:layout_constraintTop_toBottomOf="@+id/edtFatherName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

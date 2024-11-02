@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">MyFirstApplication</string>
-    <string name="hello">Hello</string>
-    <string-array name="workerNames">
-        <item>Lena</item>
-        <item>Kate</item>
-        <item>Vica</item>
-        <item>Sony</item>
-    </string-array>
+    <string name="register" translatable="false">register</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="pwd" translatable="false">Password</string>
+    <string name="first_name" translatable="false">First name</string>
+    <string name="last_name" translatable="false">Last name</string>
+    <string name="father_name" translatable="false">Father name</string>
+    <string name="done" translatable="false">Done</string>
+    <string name="avatar" translatable="false">avatar</string>
 </resources>
