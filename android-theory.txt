@@ -384,7 +384,7 @@ requestCode - идентификатор запроса (от какого к к
 resultCode - индентификатор ответа 
 data - данные, которые передаем (может быть null)
 УСТАРЕВШИЙ СПОСОБ - startActivityForResult
-НОВЫЙ СПОСОБ (kt и java) - https://developer.android.com/training/basics/intents/result?hl=ru#java
+Урок 25 НОВЫЙ СПОСОБ (kt и java) - https://developer.android.com/training/basics/intents/result?hl=ru#java
 из TaskActivity1 нужно передать текст в MainActivity
 MainActivity.kt
     lateinit var launcher: ActivityResultLauncher<Intent> // один запрос - один launcher
@@ -414,3 +414,54 @@ TaskActivity1.kt
             setResult(RESULT_OK, intent)
             finish()
         }
+
+Урок 19 Массивы и Списки 
+https://neco-desarrollo.es/2021/04/kotlin-массивы
+- методы и теория
+Массивы
+        val numbers1 : Array<Byte> = arrayOf(1,2,3)
+        val numbers2 : ByteArray = byteArrayOf(5,4,6)
+        val numbers3 : ByteArray = ByteArray(4)//создает массив байтов с размером 4 и значениями по умл 0
+        val numbers4 = arrayOfNulls<Byte>(4)//создает массив байтов с размером 4 и значениями по умл null
+        var numbers5 = emptyArray<Byte>()//создает пустой массив байтов
+        numbers5 = arrayOf(2,4,6,7)//его можно целиком перезаписать позже (после получения каких либо данных)
+
+        Log.d("MyLog", "Numbers2 ${numbers5.contentToString()}")//[2, 4, 6, 7]
+        //numbers5.reverse()//переворачивает оригинальный массив!!!
+        val numbers6 =  numbers5.reversedArray()//возвращает перевернутый массив (но не меняет оригинальный!)
+        Log.d("MyLog", "Numbers2 ${numbers6.contentToString()}")//[7, 6, 4, 2]
+
+        Log.d("MyLog", "Numbers1 ${numbers1[0]}")
+        Log.d("MyLog", "Numbers2 ${numbers2[2]}")
+
+        numbers1[0] = 8
+размер массива фиксированный, нельзя добавлять и удалять элементы, можно перезаписать или вывести
+Списки
+Неизменяемый (как массив) List - ТОЛЬКО ДЛЯ СЧИТЫВАНИЯ
+        val numbers = listOf<Byte>(1,2,4,6,9)
+        numbers[0] = 3//ERROR
+        Log.d("MyLog", "Numbers2 $numbers")
+Изменяемый (MutableList) ArrayList
+        val numbers = arrayListOf<Byte>(1,2,4,6,9)//[1, 2, 4, 6, 9]
+        numbers.add(3)//[1, 2, 4, 6, 9, 3]
+        numbers.remove(2)//[1, 4, 6, 9, 3]
+        numbers.addAll(arrayListOf(34,23,12,8))//[1, 4, 6, 9, 3, 34, 23, 12, 8]
+
+Урок 20 
+Цикл (https://neco-desarrollo.es/2021/04/kotlinциклы)
+FOR
+        val array = arrayOf("kiwi", "apple", "orange")
+        for (index in 0..array.size-1) Log.d("MyLog", "Fruit: ${array[index]}")
+        for (index in 0 until array.size) Log.d("MyLog", "Fruit: ${array[index]}")
+!!!        for (index in array.indices) Log.d("MyLog", "Fruit: ${array[index]}")
+!!!        for (element in array) Log.d("MyLog", "Fruit: $element")
+array.indices //0..2 возвращает диапозон массива
+!!!        for ((index, element) in array.withIndex()) Log.d("MyLog", "Fruit: $element | Index: $index")
+УБЫВ        for (index in 5 downTo 1) Log.d("MyLog", "Index: $index")
+ШАГ        for (index in 5 downTo 1 step 2) Log.d("MyLog", "Index: $index")
+FOREACH
+        array.forEach { element ->  Log.d("MyLog", "Element: $element")}
+WHILE и DO WHILE как везде
+
+
+

@@ -5,20 +5,36 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    //Задача предприниматели и их заработок
-    val lostArray = arrayOf(10000, 43000, 3000, 760000)//вложил
-    val earnArray = arrayOf(7000, 35000, 50000, 120000)//заработал
-    val result = ArrayList<String>()
-    //нельзя здесь инициализировать, так как приложение еще не создано, к ресурсам нельзя обратиться
-    lateinit var names : List<String>
+    //    У нас есть интервалы которые обозначают качество оценки: bad, normal, nice, excellent.
+    //    еще у нас есть массив с оценками gradeArray и массив с учениками nameArray.
+    //    Ваша задача используя цикл отсортировать учеников с оценками по группам
+
+    val bad = 0..3
+    val normal = 4..6
+    val nice = 7..9
+    val excellent = 10
+    val gradeArray = arrayOf(4, 7, 3, 6, 10, 2)
+    val nameArray = arrayOf("Антон", "Егор", "Маша", "Светлана", "Юля", "Семен")
+    val badArray = ArrayList<String>()
+    val normalArray = ArrayList<String>()
+    val niceArray = ArrayList<String>()
+    val excellentArray = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        names = resources.getStringArray(R.array.workerNames).toList()
-        for ((index, name) in names.withIndex()) {
-            result.add("$name вложила ${lostArray[index]} и заработала ${earnArray[index]}. Прибыль: ${earnArray[index] - lostArray[index]}")
+
+        for ((index, name) in nameArray.withIndex()) {
+            when (gradeArray[index]) {
+                in bad -> badArray.add("Плохие оценки: Ученик: $name – ${gradeArray[index]}")
+                in normal -> normalArray.add("Нормальные оценки: Ученик: $name – ${gradeArray[index]}")
+                in nice -> niceArray.add("Хорошие оценки: Ученик: $name – ${gradeArray[index]}")
+                excellent -> excellentArray.add("Отличные оценки: Ученик: $name – ${gradeArray[index]}")
+            }
         }
-        Log.d("MyLog", result.toString())
+        Log.d("MyLog", badArray.toString())
+        Log.d("MyLog", normalArray.toString())
+        Log.d("MyLog", niceArray.toString())
+        Log.d("MyLog", excellentArray.toString())
 
     }
 }
