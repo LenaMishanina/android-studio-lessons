@@ -8,4 +8,11 @@
     <string name="father_name" translatable="false">Father name</string>
     <string name="done" translatable="false">Done</string>
     <string name="avatar" translatable="false">avatar</string>
+    <string-array name="workerNames">
+        <item>Lena</item>
+        <item>Kate</item>
+        <item>Vica</item>
+        <item>Sony</item>
+    </string-array>
+
 </resources>
