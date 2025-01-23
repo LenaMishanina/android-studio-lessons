@@ -463,5 +463,39 @@ FOREACH
         array.forEach { element ->  Log.d("MyLog", "Element: $element")}
 WHILE и DO WHILE как везде
 
+Урок 22
+ООП (в котлине много классов - рассмотрим самый простой)
+Type 1 
+class User {
+    var id: String? = null
+    var name: String? = null
+    var age: Byte? = null
+}
+val user = User()
+Type 2
+class User(var id: String, var name: String, var age: Byte) {
+    fun addAge(years: Byte) {
+        age = (age + years).toByte()
+    }
+}
+val user1 = User("1", "Lena", 20)
+user1.addAge(5)//аргумент - 5
+https://kotlinlang.org/docs/classes.html#constructors
 
-
+Урок 23
+Функции
+https://kotlinlang.org/docs/functions.html#function-usage
+Параметры по умл
+fun read(
+    b: ByteArray,
+    off: Int = 0,
+    len: Int = b.size,
+) { /*...*/ }
+infix fun (не мб параметров по умл и только один параметр)!!!!
+class User(var id: String, var name: String, var age: Byte) {
+    infix fun addAge(years: Byte) {
+        age = age.plus(years).toByte()
+    }
+}
+val user1 = User("1", "Lena", 20)
+user1 addAge 5//аргумент - 5
